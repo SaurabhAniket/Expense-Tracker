@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Expense Summary</h1>
+    <a href="{{ url_for('add_expense') }}" class="btn btn-primary mb-3">Add Expense</a>
+    <ul class="list-group">
+        {% for category, total_amount in categories %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="{{ url_for('category_expenses', category=category) }}">{{ category }}</a>
+            <span class="badge badge-primary badge-pill">${{ total_amount }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>

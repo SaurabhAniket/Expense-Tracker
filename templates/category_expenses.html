@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses in {{ category }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Expenses in {{ category }}</h1>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary mb-3">Back to Summary</a>
+    <ul class="list-group">
+        {% for expense in expenses %}
+        <li class="list-group-item">
+            Date: {{ expense.date }}, Amount: ${{ expense.amount }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
